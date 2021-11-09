@@ -1,0 +1,74 @@
+<link rel="stylesheet" href="formdata.css">
+<h1 id="title">Technical Support Request System</h1>
+<div id="container">
+    <form id="issue_ticket_form" method="POST" action="/api/add-data">
+        <table id="form-table">
+            <tr>
+                <td>
+                    <label for="email">Enter Your Email Here:</label>
+                </td>
+                <td>
+                    <input type="text" id="email" name="email" placeholder="email@address.com" required />
+                </td>
+            </tr>
+            <tr height="20px">
+                <td></td>
+                <td id="email_error">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="description">Enter Your Description Here:</label>
+                </td>
+                <td>
+                    <textarea rows="3" id="description" name="description" placeholder="description" required></textarea>
+                </td>
+            </tr>
+
+            <tr height="20px">
+                <td></td>
+                <td id="description_error">
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <label for="due_date">Enter Your Due Date Here:</label>
+                </td>
+                <td>    
+                    <input type="date" id="due_date" name="due_date" required />
+                </td>
+            </tr>
+
+            <tr height="20px">
+                <td></td>
+                <td id="due_date_error">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <button id="clear" type="reset">Clear</button>
+                </td>
+                <td>
+                    <button id="submit" type="submit">Submit</button>
+                </td>
+            </tr>
+
+            <div id="all_request">
+            </div>
+        </table>
+    </form>
+</div>
+<br><br>
+<div id="container2">
+    <button id="get-data">Get Valid Requests</button>
+    <button id="hide-data">Hide Valid Requests</button>
+</div>
+<br>
+
+<div id="data-form"></div>
+
+
+<script src="formdata.js"></script>
