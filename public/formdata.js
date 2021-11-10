@@ -3,6 +3,9 @@ const hide_data_button = document.getElementById("hide-data");
 const display_data = document.getElementById("data-form");
 const clear_button = document.getElementById("clear");
 
+// Make post request to our backend when the submit button is clicked
+// to validate the inputs given by the user
+// Output error message accordingly
 document.forms["issue_ticket_form"].addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -40,6 +43,7 @@ document.forms["issue_ticket_form"].addEventListener("submit", (e) => {
     });
 });
 
+// Remove the displayed data on screen when hide button is clicked
 hide_data_button.addEventListener("click", () => {
     display_data.innerHTML = "";
 });
@@ -70,10 +74,13 @@ async function renderData(){
     display_data.innerHTML = output + '</table>';
 }
 
+// Make a get request to our database to retreive all valid ticket information
+// Make use of renderData() and getData()
 get_data_button.addEventListener("click", () => {
     renderData();
 });
 
+// Clear out the error message when clear button is clicked
 clear_button.addEventListener("click", () => {
     document.getElementById("email_error").innerHTML = "";
     document.getElementById("description_error").innerHTML = "";

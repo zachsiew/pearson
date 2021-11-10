@@ -65,12 +65,14 @@ function inputValidation(data){
     });
 }
 
-
+// Route to insert data into our database
 app.post('/api/add-data', (req, res) => {
     data = req.body;
 
+    // Validate user input here
     checked = inputValidation(data);
 
+    // User input is invalid if any of the condition is true
     if(checked.invalid_email || checked.invalid_description || checked.invalid_date){
         res.status(400).json({
             invalid_email: checked.invalid_email,
@@ -82,6 +84,8 @@ app.post('/api/add-data', (req, res) => {
         return;
     }
     
+    // Insert data only when the input is clean and valid
+    // Uses parametrized query to avoid sql injection
     pool.query('INSERT INTO data (email, description, due_date) VALUES ($1, $2, $3)',[
         data.email,
         data.description,
@@ -97,6 +101,7 @@ app.post('/api/add-data', (req, res) => {
 
 });
 
+// Route to print data on the screen
 app.get('/api/show-data', (req, res) => {
     pool.query(`SELECT * FROM data ORDER BY due_date`, (err, result) => {
         if(err){
