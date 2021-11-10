@@ -48,7 +48,7 @@ hide_data_button.addEventListener("click", () => {
     display_data.innerHTML = "";
 });
 
-
+// Get all ticket information from our database
 async function getData(){
     try{
         let res = await fetch("/api/show-data");
@@ -59,12 +59,15 @@ async function getData(){
     }
 }
 
+// Render data on the screen with the data that was retrieved
+// Uses async/await so that we only modify the DOM after the data is on hand
 async function renderData(){
     let datas = await getData();
     var count = 0;
 
     let output = '<table style="border-collapse:collapse" border="2px"><tr><th>Email</th><th>Description</th><th>Due Date</th></tr>';
 
+    // Loop through all the data that was retrieved and add them to a html table row
     datas.forEach(data => {
         let outputPart = `<tr height="50px" style="font-size:110%;background-color:${count % 2 === 0 ? "#ffe8a3" : "#c9c9c9"}"><td style="text-align:center">${data.email}</td><td width="30%">${data.description}</td><td style="text-align:center">${data.due_date}</td></tr>`;
         output += outputPart;
