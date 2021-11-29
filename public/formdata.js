@@ -4,6 +4,7 @@ const display_data = document.getElementById("data-form");
 const clear_button = document.getElementById("clear");
 const success_submit = document.getElementById("sucess_submit");
 const form = document.getElementById("issue_ticket_form");
+var data_showing = false;
 
 // Make post request to our backend when the submit button is clicked
 // to validate the inputs given by the user
@@ -45,7 +46,10 @@ document.forms["issue_ticket_form"].addEventListener("submit", (e) => {
             success_submit.innerHTML = "Successfully submitted!";
             clearErrors();
             form.reset();
-            renderData();
+            if(data_showing){
+                renderData();
+            }
+            
         }
     })
     .catch((err) => {
@@ -55,6 +59,8 @@ document.forms["issue_ticket_form"].addEventListener("submit", (e) => {
 
 // Remove the displayed data on screen when hide button is clicked
 hide_data_button.addEventListener("click", () => {
+    data_showing = false;
+    console.log(data_showing);
     display_data.innerHTML = "";
 });
 
@@ -90,6 +96,8 @@ async function renderData(){
 // Make a get request to our database to retreive all valid ticket information
 // Make use of renderData() and getData()
 get_data_button.addEventListener("click", () => {
+    data_showing = true;
+    console.log(data_showing);
     renderData();
 });
 
