@@ -24,7 +24,7 @@
 
 #sucess_submit {
     text-align: center;
-    
+    color: #4CAF50;
 }
 
 #get-data, #hide-data {
@@ -40,4 +40,8 @@
 
 #title {
     text-align: center;
+}
+
+#email_error, #description_error, #due_date_error {
+    color: #ff1a1a;
 }
