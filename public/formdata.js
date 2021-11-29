@@ -60,7 +60,6 @@ document.forms["issue_ticket_form"].addEventListener("submit", (e) => {
 // Remove the displayed data on screen when hide button is clicked
 hide_data_button.addEventListener("click", () => {
     data_showing = false;
-    console.log(data_showing);
     display_data.innerHTML = "";
 });
 
@@ -97,7 +96,6 @@ async function renderData(){
 // Make use of renderData() and getData()
 get_data_button.addEventListener("click", () => {
     data_showing = true;
-    console.log(data_showing);
     renderData();
 });
 
