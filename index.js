@@ -79,7 +79,8 @@ app.post('/api/add-data', (req, res) => {
             invalid_description: checked.invalid_description,
             desc_str: checked.desc_str,
             invalid_date: checked.invalid_date,
-            date_str: checked.date_str
+            date_str: checked.date_str,
+            status: "fail"
         });
         return;
     }

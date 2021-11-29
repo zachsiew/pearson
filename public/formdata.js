@@ -2,12 +2,15 @@ const get_data_button = document.getElementById("get-data");
 const hide_data_button = document.getElementById("hide-data");
 const display_data = document.getElementById("data-form");
 const clear_button = document.getElementById("clear");
+const success_submit = document.getElementById("sucess_submit");
+const form = document.getElementById("issue_ticket_form");
 
 // Make post request to our backend when the submit button is clicked
 // to validate the inputs given by the user
 // Output error message accordingly
 document.forms["issue_ticket_form"].addEventListener("submit", (e) => {
     e.preventDefault();
+    success_submit.innerHTML = "";
 
     fetch(e.target.action, {
         method: 'POST',
@@ -36,6 +39,13 @@ document.forms["issue_ticket_form"].addEventListener("submit", (e) => {
         }
         else{
             document.getElementById("due_date_error").innerHTML = "";
+        }
+
+        if(body.status === "success"){
+            success_submit.innerHTML = "Successfully submitted!";
+            clearErrors();
+            form.reset();
+            renderData();
         }
     })
     .catch((err) => {
@@ -83,9 +93,11 @@ get_data_button.addEventListener("click", () => {
     renderData();
 });
 
-// Clear out the error message when clear button is clicked
-clear_button.addEventListener("click", () => {
+function clearErrors(){
     document.getElementById("email_error").innerHTML = "";
     document.getElementById("description_error").innerHTML = "";
     document.getElementById("due_date_error").innerHTML = "";
-})
+}
+
+// Clear out the error message when clear button is clicked
+clear_button.addEventListener("click", clearErrors);

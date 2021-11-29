@@ -22,6 +22,11 @@
     color: white;
 }
 
+#sucess_submit {
+    text-align: center;
+    
+}
+
 #get-data, #hide-data {
     height: 50px;
     width: 200px;
